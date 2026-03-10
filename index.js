@@ -3,7 +3,7 @@
  * Las APIs se sirven desde la carpeta /api (serverless functions)
  */
 
-module.exports = (req, res) => {
+export default function handler(req, res) {
     res.status(200).json({
         success: true,
         message: 'Mercado Estación API - Serverless',
@@ -13,4 +13,5 @@ module.exports = (req, res) => {
             docs: 'Ver README.md'
         }
     });
-};
+}
+

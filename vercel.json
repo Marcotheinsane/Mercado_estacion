@@ -5,9 +5,5 @@
     "regions": [
         "sfo1"
     ],
-    "functions": {
-        "api/**": {
-            "runtime": "nodejs24.x"
-        }
-    }
+    "public": "public"
 }

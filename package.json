@@ -2,7 +2,6 @@
     "name": "mercado-estacion-api",
     "version": "1.0.0",
     "description": "API RESTful para gestión de clientes y giros usando Vercel y Neon PostgreSQL",
-    "main": "app.js",
     "scripts": {
         "dev": "vercel dev",
         "build": "echo 'No build needed'",

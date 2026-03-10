@@ -2,8 +2,5 @@
     "buildCommand": "echo 'No build needed'",
     "devCommand": "vercel dev",
     "installCommand": "npm install",
-    "framework": "node",
-    "regions": [
-        "sfo1"
-    ]
+    "regions": ["sfo1"]
 }

@@ -4,6 +4,5 @@
     "installCommand": "npm install",
     "regions": [
         "sfo1"
-    ],
-    "public": "public"
+    ]
 }

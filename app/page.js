@@ -33,9 +33,15 @@ export default function Home() {
         try {
             const res = await fetch('/api/clientes');
             const data = await res.json();
-            setClientes(data);
+            if (!res.ok || data.error) {
+                console.error('API error:', data.error);
+                setClientes([]);
+            } else {
+                setClientes(Array.isArray(data) ? data : []);
+            }
         } catch (error) {
             console.error('Error fetching clientes:', error);
+            setClientes([]);
         } finally {
             setLoading(false);
         }
@@ -45,9 +51,15 @@ export default function Home() {
         try {
             const res = await fetch('/api/giros');
             const data = await res.json();
-            setGiros(data);
+            if (!res.ok || data.error) {
+                console.error('API error:', data.error);
+                setGiros([]);
+            } else {
+                setGiros(Array.isArray(data) ? data : []);
+            }
         } catch (error) {
             console.error('Error fetching giros:', error);
+            setGiros([]);
         }
     };
 

@@ -2,7 +2,7 @@
  * Endpoint: GET /api/giros - Listar todos los giros
  * Endpoint: POST /api/giros - Crear nuevo giro
  * 
- * v1.1 - Fixed for Vercel serverless
+ * v1.2 - Fixed for Vercel serverless
  */
 
 const { query } = require('../lib/database');

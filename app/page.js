@@ -174,6 +174,7 @@ export default function Home() {
     return (
         <div className="min-h-screen bg-gray-50 py-8 px-4">
             <div className="max-w-7xl mx-auto">
+                <img src="/logo.png" alt="Mercado Estación" className="w-32 mb-6" />
                 <h1 className="text-4xl font-bold mb-8 text-gray-900">Mercado Estación</h1>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

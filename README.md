@@ -1,67 +1,172 @@
 # Mercado Estación
 
-Aplicación Next.js 14 con conexión a Neon PostgreSQL.
+![Project banner](./public/example.png)
 
-## Setup Rápido
+Aplicación web construida con **Next.js 14** que permite gestionar clientes y giros comerciales utilizando **PostgreSQL en Neon** como base de datos.
 
-1. **Instalar dependencias:**
+---
+
+# Descripción general
+
+Este repositorio contiene una aplicación web desarrollada con **Next.js 14** que implementa una API interna mediante **Route Handlers** para gestionar información de clientes y sus giros comerciales.
+
+La aplicación funciona como una solución full-stack ligera donde:
+
+- **Next.js** maneja la interfaz y los endpoints API
+- **PostgreSQL en Neon** almacena la información
+- **Tailwind CSS** gestiona el estilo visual
+
+El objetivo del proyecto es ofrecer una estructura clara para gestionar datos relacionales mediante un CRUD completo.
+
+---
+
+# Alcance del proyecto
+
+## Incluye
+
+- Interfaz web construida con Next.js
+- API REST interna mediante `app/api`
+- Operaciones CRUD para clientes y giros
+- Conexión a base de datos PostgreSQL (Neon)
+- Validación básica de datos
+- Estilizado con Tailwind CSS
+
+## No incluye
+
+- Sistema de autenticación
+- Control de roles o permisos
+- Lógica de negocio compleja
+- Microservicios externos
+
+---
+
+# Arquitectura
+
+El proyecto utiliza la arquitectura **App Router de Next.js 14**, donde:
+
+- La **UI** se encuentra en `/app`
+- Los **endpoints API** se encuentran en `/app/api`
+- La **conexión a base de datos** se centraliza en `/lib/db.js`
+
+Flujo básico:
+
+```
+UI (Next.js)
+      ↓
+API Routes (/app/api)
+      ↓
+Neon PostgreSQL
+```
+
+---
+
+# Tecnologías utilizadas
+
+- Next.js 14
+- React
+- PostgreSQL
+- Neon Database
+- Tailwind CSS
+- Node.js
+- npm
+- vercel 
+---
+
+# Configuración del entorno
+
+## Requisitos previos
+
+- Node.js (versión LTS recomendada)
+- npm
+- Base de datos en Neon
+
+---
+
+# Instalación
+
+## 1. Clonar el repositorio
+
+```bash
+git clone <repo-url>
+cd mercado-estacion
+```
+
+---
+
+## 2. Instalar dependencias
+
 ```bash
 npm install
 ```
 
-2. **Configurar variables de entorno:**
+---
+
+## 3. Configurar variables de entorno
+
+Copia el archivo de ejemplo:
+
 ```bash
 cp .env.local.example .env.local
 ```
-Edita `.env.local` y asegúrate de que DATABASE_URL esté correctamente configurado.
 
-3. **Ejecutar en desarrollo:**
+Edita `.env.local` y configura la conexión a la base de datos:
+
+```
+DATABASE_URL=postgresql://user:password@host/database
+```
+
+---
+
+# Ejecución en desarrollo
+
 ```bash
 npm run dev
 ```
 
-Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
+La aplicación esta disponible en:
 
-## Estructura de Archivos
+```
+https://mercado-estacion.vercel.app/
+```
 
-- `/app/page.js` - Página principal con UI
-- `/app/layout.js` - Layout global
-- `/app/api/clientes/route.js` - GET/POST clientes
-- `/app/api/clientes/[id]/route.js` - GET/PUT/DELETE cliente
-- `/app/api/giros/route.js` - GET/POST giros
-- `/app/api/giros/[id]/route.js` - GET/PUT/DELETE giro
-- `/lib/db.js` - Conexión a Neon
-- `package.json` - Dependencias
-- `tailwind.config.js` - Config de Tailwind
+---
 
-## Deploy en Vercel
+# Estructura del proyecto
 
-1. Crea un repositorio en GitHub
-2. Conecta tu repositorio a Vercel
-3. Agrega las variables de entorno en Vercel (DATABASE_URL)
-4. Deploy automático en cada push a main
+```
+app/
+ ├─ api/
+ │   ├─ clientes/
+ │   │   ├─ route.js
+ │   │   └─ [id]/route.js
+ │   ├─ giros/
+ │   │   ├─ route.js
+ │   │   └─ [id]/route.js
+ │
+ ├─ layout.js
+ └─ page.js
 
-## Tablas de la Base de Datos
+lib/
+ └─ db.js
 
-### cliente
-- id (integer)
-- rut (varchar)
-- nombre (varchar)
-- apellido (varchar)
-- direccion (varchar)
-- giro_principal_id (integer)
-- tipo_persona (char)
-- email (varchar)
-- telefono (varchar)
-- observaciones (text)
-- created_at (timestamp)
+public/
+ └─ example.png
 
-### giro
-- id (integer)
-- nombre (varchar)
-- categoria (varchar)
-- created_at (timestamp)
+tailwind.config.js
+package.json
+```
 
-### cliente_giro
-- cliente_id (integer)
-- giro_id (integer)
+Descripción:
+
+- `/app/page.js` → Página principal  
+- `/app/layout.js` → Layout global  
+- `/app/api/clientes` → CRUD de clientes  
+- `/app/api/giros` → CRUD de giros  
+- `/lib/db.js` → Conexión a Neon PostgreSQL  
+- `/public` → Archivos estáticos (imágenes)
+
+---
+
+# Licencia
+
+Este proyecto se distribuye bajo la licencia **MIT**.

@@ -5,8 +5,8 @@
  * v1.1 - Fixed for Vercel serverless
  */
 
-const { query } = require('../../lib/database');
-const { handleCors, sendSuccess, sendError, asyncHandler } = require('../../middleware/response');
+const { query } = require('../lib/database');
+const { handleCors, sendSuccess, sendError, asyncHandler } = require('../middleware/response');
 
 /**
  * GET /api/giros?page=1&limit=20

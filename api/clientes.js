@@ -3,9 +3,9 @@
  * Endpoint: POST /api/clientes - Crear nuevo cliente
  */
 
-const { query } = require('../../lib/database');
-const { isValidRut, formatRut, cleanRut } = require('../../lib/rutValidator');
-const { handleCors, sendSuccess, sendError, asyncHandler } = require('../../middleware/response');
+const { query } = require('../lib/database');
+const { isValidRut, formatRut, cleanRut } = require('../lib/rutValidator');
+const { handleCors, sendSuccess, sendError, asyncHandler } = require('../middleware/response');
 
 /**
  * GET /api/clientes?page=1&limit=10

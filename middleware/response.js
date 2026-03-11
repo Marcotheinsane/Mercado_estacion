@@ -82,10 +82,4 @@ function asyncHandler(fn) {
     };
 }
 
-module.exports = {
-    handleCors,
-    enableCors,
-    sendSuccess,
-    sendError,
-    asyncHandler,
-};
+export { handleCors, enableCors, sendSuccess, sendError, asyncHandler };

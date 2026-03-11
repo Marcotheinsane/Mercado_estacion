@@ -2,7 +2,7 @@
  * Test endpoint - verify serverless functions work WITHOUT database
  */
 
-module.exports = (req, res) => {
+export default async function handler(req, res) {
     res.status(200).json({
         status: 'ok',
         message: 'Serverless function is working',
@@ -12,4 +12,4 @@ module.exports = (req, res) => {
             databaseConfigured: !!process.env.DATABASE_URL
         }
     });
-};
+}

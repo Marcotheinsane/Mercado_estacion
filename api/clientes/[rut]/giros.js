@@ -3,9 +3,9 @@
  * Endpoint: POST /api/clientes/[rut]/giros - Asignar giro secundario
  */
 
-const { query } = require('../../../lib/database');
-const { isValidRut, cleanRut, formatRut } = require('../../../lib/rutValidator');
-const { handleCors, sendSuccess, sendError, asyncHandler } = require('../../../middleware/response');
+import { query } from '../../../lib/database.js';
+import { isValidRut, cleanRut, formatRut } from '../../../lib/rutValidator.js';
+import { sendSuccess, sendError, handleCors } from '../../../middleware/response.js';
 
 /**
  * GET /api/clientes/[rut]/giros
@@ -131,7 +131,10 @@ async function handlePost(req, res) {
     }, 201);
 }
 
-module.exports = asyncHandler(async (req, res) => {
+/**
+ * Handler principal - Compatible con Vercel Functions
+ */
+export default async function handler(req, res) {
     if (handleCors(req, res)) return;
 
     if (req.method === 'GET') {
@@ -139,6 +142,6 @@ module.exports = asyncHandler(async (req, res) => {
     } else if (req.method === 'POST') {
         return await handlePost(req, res);
     } else {
-        sendError(res, 'Método no permitido', 405);
+        return sendError(res, 'Método no permitido', 405);
     }
-});
+}

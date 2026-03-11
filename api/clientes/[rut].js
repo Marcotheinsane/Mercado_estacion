@@ -4,9 +4,9 @@
  * Endpoint: DELETE /api/clientes/[rut] - Eliminar cliente
  */
 
-const { query } = require('../../lib/database');
-const { isValidRut, formatRut, cleanRut } = require('../../lib/rutValidator');
-const { handleCors, sendSuccess, sendError, asyncHandler } = require('../../middleware/response');
+import { query } from '../../lib/database.js';
+import { isValidRut, formatRut, cleanRut } from '../../lib/rutValidator.js';
+import { sendSuccess, sendError, handleCors } from '../../middleware/response.js';
 
 /**
  * GET /api/clientes/[rut]
@@ -239,7 +239,10 @@ async function handleDelete(req, res) {
     });
 }
 
-module.exports = asyncHandler(async (req, res) => {
+/**
+ * Handler principal - Compatible con Vercel Functions
+ */
+export default async function handler(req, res) {
     if (handleCors(req, res)) return;
 
     if (req.method === 'GET') {
@@ -249,6 +252,6 @@ module.exports = asyncHandler(async (req, res) => {
     } else if (req.method === 'DELETE') {
         return await handleDelete(req, res);
     } else {
-        sendError(res, 'Método no permitido', 405);
+        return sendError(res, 'Método no permitido', 405);
     }
-});
+}
